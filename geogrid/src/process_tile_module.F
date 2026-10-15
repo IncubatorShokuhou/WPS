@@ -2160,11 +2160,13 @@ module process_tile_module
             end do
      
             do i=start_mem_i, end_mem_i
-               dst_arr(i,start_mem_j,k) = (src_arr(i,start_mem_j+1,k) - src_arr(i,start_mem_j,k))/(dom_dy*mapfac(i,j)/sr_y)
+               dst_arr(i,start_mem_j,k) = (src_arr(i,start_mem_j+1,k) - src_arr(i,start_mem_j,k)) / &
+                                          (dom_dy*mapfac(i,start_mem_j)/sr_y)
             end do
      
             do i=start_mem_i, end_mem_i
-               dst_arr(i,end_mem_j,k) = (src_arr(i,end_mem_j,k) - src_arr(i,end_mem_j-1,k))/(dom_dy*mapfac(i,j)/sr_y)
+               dst_arr(i,end_mem_j,k) = (src_arr(i,end_mem_j,k) - src_arr(i,end_mem_j-1,k)) / &
+                                        (dom_dy*mapfac(i,end_mem_j)/sr_y)
             end do
          end do
       else
@@ -2225,11 +2227,13 @@ module process_tile_module
             end do
      
             do j=start_mem_j, end_mem_j
-               dst_arr(start_mem_i,j,k) = (src_arr(start_mem_i+1,j,k) - src_arr(start_mem_i,j,k))/(dom_dx*mapfac(i,j)/sr_x)
+               dst_arr(start_mem_i,j,k) = (src_arr(start_mem_i+1,j,k) - src_arr(start_mem_i,j,k)) / &
+                                          (dom_dx*mapfac(start_mem_i,j)/sr_x)
             end do
      
             do j=start_mem_j, end_mem_j
-               dst_arr(end_mem_i,j,k) = (src_arr(end_mem_i,j,k) - src_arr(end_mem_i-1,j,k))/(dom_dx*mapfac(i,j)/sr_x)
+               dst_arr(end_mem_i,j,k) = (src_arr(end_mem_i,j,k) - src_arr(end_mem_i-1,j,k)) / &
+                                        (dom_dx*mapfac(end_mem_i,j)/sr_x)
             end do
          end do
       else
